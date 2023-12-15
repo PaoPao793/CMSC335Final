@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"> 
+    <head>
+        <meta charset="utf-8">
+        <title>Activities Tracker: Stored Activities</title>
+        <link rel="stylesheet" href="/css/style.css" type="text/css">
+        <script src="code.js" defer></script>
+    </head>
+
+    <body>
+        <div class="topnav">
+            <a href="/">Home</a>
+            <a href="/activities">Activities</a>
+            <a href="/find">Find</a>
+        </div>
+
+        <h1>Activities Stored in Database</h1>
+
+        <fieldset>
+            <legend>Stored Activities</legend>
+
+            <div>
+                <p>Found <%- number %> activities stored in the database</p>
+            </div>
+
+            <div id="mongoDisplay">
+                <%- activitiesTable %>
+            </div>
+
+            
+        </fieldset>
+
+
+    </body>
+
+
+
+</html>

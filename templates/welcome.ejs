@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"> 
+    <head>
+        <meta charset="utf-8">
+        <title>Activity Tracker</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <script src="code.js" defer></script>
+    </head>
+
+    <body>
+        <h1>Photo Viewer</h1>
+
+        <form> 
+
+        <fieldset id="status">
+            <legend>Record keeping</legend>
+            <label for="photoDisplayed">Photo Being Displayed: </label>
+            <input type="text" name="inputPhotoDisplayed" id="photoDisplayed" class="longerText" disabled="disabled">
+
+            <br>
+            <div id="statusMessage"> </div>
+             <!--<label id="desiredMessage" for="viewerSystem">Photo Viewer System</label> -->
+            
+        </fieldset>
+
+        <fieldset id="loadingImagesLocal">
+            <legend>Find something else</legend>
+            <label for="photosFolder">Photos' Folder: </label>
+            <input type="text" name="inputPhotosFolder" id="photosFolder" value="umcp/">
+
+            <label for="commonName">Common Name</label>
+            <input type="text" name="inputCommonName" id="commonName" value="college">
+
+            <br> 
+            <label for="startPhotoNum">Start Photo Number: </label>
+            <input type="text" name="inputStatPhotoNum" id="startPhotoNum" value="2"> 
+
+            <label for="endPhotoNum">End Photo Number: </label>
+            <input type="text" name="inputEndPhotoNum" id="endPhotoNum" value="4">
+            <!-- after reading start and end, must check that end >= start else dispaly "Error: Invalid Range in a div inside the status area (in red)"-->
+
+            <br>
+            <input type="button" id="loadLocal" name="inputLoadLocal"value="Load Photos"> 
+            <!-- photos in the range from startPhotoNum and endPhotoEnd can be displayed  -->
+            <!-- code should read the folder name, common name, start photo num, and end photoNum -->
+            <!-- create an array with the names of the photos that belong to the range. each name has a folder name, followed by common name
+            the photos number, and the .jpeg extension. -->
+
+        </fieldset>
+
+        <fieldset id="loadingImagesJSON">
+            <legend>Loading Images (JSON File)</legend>
+            <label for="url">URL: </label>
+            <input type="text" id="url" name="inputUrl" class="longerText" value="http://www.cs.umd.edu/~nelson/classes/resources/cmsc335/images/imagesSet1.json">
+            <input type="button" id="loadJSON" name="inputLoadJSON" value="Load JSON">
+
+        </fieldset>
+
+        <fieldset id="iterating">
+            <!-- don't iterate or start a slideshow w/o first loading the data else dispaly: "Error: you must load the data first" in a div in the status field (in red) -->
+            <legend>Iterating</legend>
+            <input type="button" value="Previous Photo" id="prevP" name="inputPrevPhoto"> <!-- displays prev photo -->
+            <input type="button" value="Next Photo" id="nextP" name="inputNextPhoto"> <!-- displays next photo -> same effect if you click on the image being displayed btw -->
+            <input type="button" value="First Photo" id="firstP" name="inputFirstPhoto"> <!-- displays first photo -->
+            <input type="button" value="Last Photo" id="lastP" name="inputLastPhoto"> <!-- displays last photo -->
+        </fieldset>
+
+        <fieldset id="slideShows">
+            <legend>SlideShows</legend>
+            <!-- speed for animations are 1 second -->
+            <input type="button" value="SlideShow" name="inputSlideShow" id="slideShow"> <!-- photos in the rage displayed continuously -->
+            <input type="button" value="RandomSlideShow" name="inputRandomShow" id="randomShow"> <!-- photos are displayed in a random order -->
+            <input type="button" value="StopSlideShow" name="inputStopShow" id="stopShow"> <!-- stops current animation -->
+        </fieldset>
+
+        <hr> 
+
+        <input type="reset" value="Reset Form Values" name="inputReset" id="reset">
+        </form>
+
+        
+
+    </body>
+
+
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"> 
+    <head>
+        <meta charset="utf-8">
+        <title>Activity Tracker</title>
+        <link rel="stylesheet" href="/css/style.css" type="text/css">
+        <script src="../code.js" defer></script>
+    </head>
+
+    <body>
+        <div class="topnav">
+            <a class="active" href="/">Home</a>
+            <a href="/activities">Activities</a>
+            <a href="/find">Find</a>
+        </div>
+
+        <h1>Activity Tracker</h1>
+
+        <fieldset id="status">
+            <legend>Store Activity in DB</legend>
+            <p>To store an activity in the database fill out the form</p>
+
+            <form action="/" method="post">
+                <label for="name">Activity: </label> <br>
+                <input type="text" name="activity" placeholder="e.g. Reading book"><br>
+
+                <label>Type: </label> <br>
+                <input type="text" name="type" placeholder="e.g. relaxation"><br>
+
+                <label>Participants: </label> <br>
+                <input type="text" name="participants" placeholder="e.g. 2"><br>
+                
+                <label>Price: </label> <br>
+                <input type="text" name="price" placeholder="e.g. 5"><br>
+
+                <input class="button" type="submit" value="Submit Activity">
+                <input class="button" type="reset" value="Reset">
+
+            </form>
+             
+        </fieldset>
+
+    </body>
+
+</html>
