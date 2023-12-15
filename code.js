@@ -1,7 +1,6 @@
 process.stdin.setEncoding("utf8");
 
-// command line args
-// deal with the command line stuff 
+// command line arguments 
 if (process.argv.length != 2) {
   process.stdout.write(`Usage code.js\n`);
   process.exit(0);
@@ -26,11 +25,7 @@ process.stdin.on("readable", function () {
   }
 });
 
-
-
-
-// MongoDB stuff 
-// MongoBD vars and requirements 
+// MongoDB 
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, '.env') }) 
 
@@ -43,7 +38,6 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const uri = `mongodb+srv://${userName}:${password}@cluster0.cbcpfwi.mongodb.net/?retryWrites=true&w=majority`
 const client = new MongoClient(uri, { serverApi: ServerApiVersion.v1 });
-
 
 
 // Implementing endspoints (express)
@@ -65,7 +59,6 @@ app.get('/code.js', (req, res) => {
 
 app.get("/", (req, res) => {
   res.render("index");
-  //res.sendFile(__dirname + "/index.html");
 });
 
 app.get("/activities", async (req, res) => {
@@ -95,11 +88,11 @@ app.post("/", async (req, res) => {
   let price = req.body.price;
   let participants = req.body.participants;
 
-  console.log(activity);
-
   // to add the activity
   let toAdd = { activity, type, participants, price };
   await client.db(db).collection(collection).insertOne(toAdd);
+
+  res.redirect("/activities")
 
 });
 
@@ -109,8 +102,6 @@ app.post("/activities", async (req, res) => {
   await client.db(db).collection(collection).deleteMany({});
 
   let activitiesTable = "";
-
-  console.log("cleared");
 
   let filter = {};
   const cursor = client.db(db).collection(collection).find(filter);
