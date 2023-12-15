@@ -7,7 +7,7 @@ if (process.argv.length != 2) {
   process.exit(0);
 }
 
-const portNumber = 3000;
+const portNumber = 4000;
 
 process.stdout.write(`Server started and running at http://localhost:${portNumber}\n`)
 const prompt = "Stop to shutdown the server: ";
@@ -72,7 +72,6 @@ app.get("/activities", async (req, res) => {
   await client.connect();
   let filter = {};
   const cursor = client.db(db).collection(collection).find(filter);
-        
   const result = await cursor.toArray();
 
   let activitiesTable = `<table class="center"`;
@@ -103,6 +102,22 @@ app.post("/", async (req, res) => {
   await client.db(db).collection(collection).insertOne(toAdd);
 
 });
+
+app.post("/activities", async (req, res) => {
+  req.body
+
+  await client.db(db).collection(collection).deleteMany({});
+
+  let activitiesTable = "";
+
+  console.log("cleared");
+
+  let filter = {};
+  const cursor = client.db(db).collection(collection).find(filter);
+  const result = await cursor.toArray();
+
+  res.render("activities", { number: result.length , activitiesTable });
+})
 
 app.get("/find", async (req, res) => {
   let activities = [];
